@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19",
+          "react-dom/client": "https://esm.sh/react-dom@19/client"
+        }
+      }
+    </script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- especificar "text/babel" y "data-type="module"" en el tipo de script -->
+    <script type="text/babel" data-type="module">
+      import React from 'react';
+      import { createRoot } from 'react-dom/client';
+
+      const root = createRoot(document.querySelector('#root'));
+      const name = 'Carlos';
+      // usando JSX:
+      const element = (
+        <div className={'counter'}>
+          <div className='counter__display'>0</div>
+          <div className='counter__actions'>
+            <button className='counter__button'>Decrement</button>
+            <button className='counter__button'>Increment</button>
+            <button className='counter__button'>Reset</button>
+          </div>
+        </div>
+      );
+
+      root.render(element);
+    </script>
+  </body>
+</html>

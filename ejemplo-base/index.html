@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML + JS PURO</title>
+  </head>
+  <body>
+    <body>
+      <div id="root"></div>
+    </body>
+    <script>
+      const container = document.querySelector('#root');
+      const element = document.createElement('div');
+      element.className = 'container';
+
+      const h2 = document.createElement('h2');
+      h2.textContent = 'Hola mundo';
+      const p = document.createElement('p');
+      p.textContent = 'Hoy aprenderemos algo de React';
+
+      element.append(h2, p);
+      container.append(element);
+    </script>
+  </body>
+</html>
