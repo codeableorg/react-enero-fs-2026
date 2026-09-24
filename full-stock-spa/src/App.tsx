@@ -17,7 +17,11 @@ function App() {
   return (
     <ul className='card-list'>
       {data.map((person) => (
-        <Card name={person.name} position={person.position} />
+        <Card
+          name={person.name}
+          position={person.position}
+          key={person.username}
+        />
       ))}
     </ul>
   );
