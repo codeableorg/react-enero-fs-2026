@@ -1,0 +1,25 @@
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: GhostWhite;
+}
+
+.green-dot {
+  background-color: MediumSeaGreen;
+  border: 2px solid SeaGreen;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+.gray-dot {
+  background-color: gray;
+  border: 2px solid black;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
