@@ -1,5 +1,6 @@
 // import Card from './Card';
-import Contact from './Contact';
+// import Contact from './Contact';
+import { ContactList } from './ContactList';
 
 // const data = [
 //   { username: 'mica-123', name: 'Micaela', position: 'Frontend Developer' },
@@ -9,7 +10,7 @@ import Contact from './Contact';
 // ];
 
 function App() {
-  const contacts = ['Carlos', 'Ruth', 'Jorge'];
+  const contacts = [];
   const numOfContacts = contacts.length;
   return (
     <div>
@@ -22,11 +23,7 @@ function App() {
           />
         ))}
       </ul> */}
-      <ul className='contact-list'>
-        <Contact name='Carlos' isOnline />
-        <Contact name='Ruth' />
-        <Contact name='Jorge' />
-      </ul>
+      {numOfContacts ? <ContactList contacts={contacts} /> : 'No hay contactos'}
     </div>
   );
 }
