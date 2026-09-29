@@ -1,38 +1,28 @@
-// import Card from './Card';
-import type { ContactProps } from './Contact';
-import { ContactList } from './ContactList';
-// type Person = {
-//   username: string;
-//   name: string;
-//   position: string;
-// };
+// import type { MouseEvent } from 'react';
 
-// const data: Person[] = [
-//   { username: 'mica-123', name: 'Micaela', position: 'Frontend Developer' },
-//   { username: 'si-simon', name: 'Simon', position: 'Backend Developer' },
-//   { username: 'miguelito', name: 'Miguel', position: 'Fullstack Developer' },
-//   { username: 'testino', name: 'Probino', position: 'Project Manager' }
-// ];
+// function App() {
+//   function handleClick(event: MouseEvent<HTMLButtonElement>) {
+//     console.log('Evento click recibido');
+//     console.log(event.type);
+//     console.log(event.target);
+//   }
+
+//   return <button onClick={(e) => handleClick(e)}>Click me</button>;
+// }
 
 function App() {
-  const contacts: ContactProps[] = [
-    { name: 'carlos', isOnline: true },
-    { name: 'ruth', isOnline: false },
-    { name: 'miguel', isOnline: false }
-  ];
-  const numOfContacts = contacts.length;
+  function setTheme(theme: string) {
+    console.log('Cambiando al tema: ' + theme);
+  }
+
+  function handleClick(theme: string) {
+    setTheme(theme);
+  }
+
   return (
     <div>
-      {/* // <ul className='card-list'>
-      //   {data.map((person) => (
-      //     <Card
-      //       name={person.name}
-      //       position={person.position}
-      //       key={person.username}
-      //     />
-      //   ))}
-      // </ul> */}
-      {numOfContacts ? <ContactList contacts={contacts} /> : 'No hay contactos'}
+      <button onClick={() => handleClick('light')}>Light Theme</button>
+      <button onClick={() => handleClick('dark')}>Dark Theme</button>
     </div>
   );
 }
