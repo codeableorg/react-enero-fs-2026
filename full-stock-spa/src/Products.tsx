@@ -38,6 +38,7 @@ export default function Products() {
         return product;
       }
     });
+
     setProducts(nextProducts);
   }
 
@@ -49,8 +50,6 @@ export default function Products() {
     addProduct(productName);
     form.reset();
   }
-
-  console.log('carlos');
 
   return (
     <div>
@@ -68,7 +67,7 @@ export default function Products() {
                   type='checkbox'
                   checked={product.inStock}
                   onChange={() => toggleStock(product.id)}
-                />{' '}
+                />
                 In Stock
               </p>
               <button onClick={() => removeProduct(product.id)}>Delete</button>
