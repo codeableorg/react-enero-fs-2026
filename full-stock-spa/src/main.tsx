@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import './index.css';
 // import EjercicioPassword from './EjercicioPassword';
-import App from './Elevacion/App';
+import App from './Co-localizacion/App';
 // import Form from './Form';
 // import ControlledForm from './ControlledForm';
 // import UncontrolledForm from './UncontrolledForm';
