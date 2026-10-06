@@ -1,0 +1,47 @@
+/*
+  Estilos generales para todos los tipos de nota
+*/
+
+:root {
+  --info: #385ac0;
+  --info-border: #172655;
+  --success: #17954c;
+  --success-border: #052e16;
+  --warning: #9e4f1b;
+  --warning-border: #421f07;
+  --danger: #951b1b;
+  --danger-border: #430a0a;
+  color: white;
+}
+
+.wrapper {
+  padding: 24px;
+  border-left: 3px solid;
+  border-radius: 3px 6px 6px 3px;
+  margin-bottom: 32px;
+}
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/*
+  Estilos específicos para cada tipo (prop type).
+*/
+.info {
+  background-color: var(--info);
+  border-color: var(--info-border);
+}
+.warning {
+  background-color: var(--warning);
+  border-color: var(--warning-border);
+}
+.danger {
+  background-color: var(--danger);
+  border-color: var(--danger-border);
+}
+.success {
+  background-color: var(--success);
+  border-color: var(--success-border);
+}

@@ -1,16 +1,7 @@
 // import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './AppDefault';
-// import EjercicioPassword from './EjercicioPassword';
-// import App from './estilos-css/App';
-// import Form from './Form';
-// import ControlledForm from './ControlledForm';
-// import UncontrolledForm from './UncontrolledForm';
-
-// import App from './App.tsx';
-// import Counter from './Counter';
-// import Products from './Products';
+// import './index.css';
+import App from './ejercicios/ejercicio1/App';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
