@@ -1,8 +1,9 @@
 // import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+import App from './AppDefault';
 // import EjercicioPassword from './EjercicioPassword';
-import App from './estilos-css/App';
+// import App from './estilos-css/App';
 // import Form from './Form';
 // import ControlledForm from './ControlledForm';
 // import UncontrolledForm from './UncontrolledForm';

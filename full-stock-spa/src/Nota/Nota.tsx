@@ -6,7 +6,7 @@ type NotaProps = {
   children: ReactNode;
 };
 
-function Nota({ title, children }: NotaProps) {
+export default function Nota({ title, children }: NotaProps) {
   return (
     <aside className={styleNota.wrapper}>
       <h3 className={styleNota.title}>{title}</h3>
@@ -15,4 +15,6 @@ function Nota({ title, children }: NotaProps) {
   );
 }
 
-export default Nota;
+// export function sumar() {
+//   console.log('carlos');
+// }
