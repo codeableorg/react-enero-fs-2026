@@ -1,4 +1,4 @@
-import Nota from './Nota';
+import Nota from './semana 1/Nota';
 
 function App() {
   return (
