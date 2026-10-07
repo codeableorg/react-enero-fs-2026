@@ -1,0 +1,23 @@
+:root {
+  --spacing-2: 1rem;
+  --muted-foreground: 240 5% 65%;
+  --red-600: 0, 66%, 46%;
+  --font-sm: 0.85rem;
+  --leading-5: 0.9rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.message {
+  color: hsl(var(--muted-foreground));
+  font-size: var(--font-sm);
+  line-height: var(--leading-5);
+}
+
+.error {
+  color: hsl(var(--red-600));
+}
