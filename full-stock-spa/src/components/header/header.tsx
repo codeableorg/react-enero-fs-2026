@@ -1,5 +1,5 @@
-import AuthNav from './components/auth-nav';
-import HeaderMain from './components/header-main';
+import AuthNav from '../auth-nav';
+import HeaderMain from '../header-main';
 
 type HeaderProps = {
   className?: string;

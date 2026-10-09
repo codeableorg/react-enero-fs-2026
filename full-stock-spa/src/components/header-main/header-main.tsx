@@ -1,5 +1,5 @@
-import HeaderActions from './components/header-actions';
-import MainNav from './components/main-nav';
+import HeaderActions from '../header-actions';
+import MainNav from '../main-nav';
 import styles from './styles.module.css';
 
 type HeaderMainProps = {
