@@ -1,20 +1,9 @@
+import Hero from '../hero';
+
 export default function HomePage() {
   return (
     <>
-      <section className='hero'>
-        <div className='container hero__container'>
-          <h2 className='hero__title'>Nuevos productos disponibles</h2>
-          <p className='hero__text'>
-            Un pequeño lote de increíbles productos acaba de llegar.
-            <br />
-            Agrega tus favoritos al carrito antes que se agoten.
-          </p>
-          <a href='/category' className='button button--xl'>
-            Compra ahora
-          </a>
-        </div>
-      </section>
-
+      <Hero />
       <section className='categories'>
         <div className='container'>
           <div className='categories__header'>
