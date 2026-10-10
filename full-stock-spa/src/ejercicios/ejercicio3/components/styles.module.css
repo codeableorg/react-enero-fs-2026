@@ -1,0 +1,28 @@
+.number {
+  text-align: center;
+  font-size: var(--font-xl);
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: var(--rounded);
+  border: 1px solid hsl(var(--muted-foreground));
+}
+
+.odd {
+  color: hsl(var(--green-700));
+}
+
+.even {
+  color: hsl(var(--red-700));
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.small {
+  font-size: var(--font-sm);
+}
+
+.big {
+  font-size: var(--font-3xl);
+}

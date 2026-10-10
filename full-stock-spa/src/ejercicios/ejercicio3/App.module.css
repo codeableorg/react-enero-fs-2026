@@ -1,0 +1,15 @@
+:root {
+  --font-xl: 1.5rem;
+  --rounded: 0.5rem;
+  --green-700: 120, 100%, 40%;
+  --red-700: 0, 100%, 40%;
+  --font-sm: 0.875rem;
+  --font-3xl: 1.875rem;
+  --muted-foreground: 210, 10%, 50%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
