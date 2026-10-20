@@ -1,0 +1,20 @@
+import type { Category } from '../home-page';
+import styles from './styles.module.css';
+
+type CategoryProps = {
+  category: Category;
+};
+
+export default function CategoryCard({ category }: CategoryProps) {
+  return (
+    <a href='category' className={styles.category}>
+      <div className={styles.category__image}>
+        <img src={category.imgSrc} alt={category.alt ?? category.title} />
+      </div>
+      <div>
+        <h3 className={styles.category__title}>{category.title}</h3>
+        <p className={styles.category__description}>{category.description}</p>
+      </div>
+    </a>
+  );
+}
