@@ -1,74 +1,69 @@
-import { useState, type SubmitEvent } from 'react';
-// import './App.css';
+import PokemonCard from './PokemonCard';
+import Spinner from './Spinner';
+import styles from './App.module.css';
+import { useCallback, useEffect, useState } from 'react';
 
-const ENDPOINT =
-  'https://test-api-codeable.up.railway.app/api/data?simulatedError=true';
+type Pokemon = {
+  id: string;
+  name: string;
+  image_url: string;
+  types: string[];
+};
 
-type statuses = 'idle' | 'loading' | 'error' | 'success';
+const ENDPOINT = 'https://test-api-codeable.up.railway.app/api/pokemons';
+
+type status = 'idle' | 'loading' | 'success' | 'error';
 
 function App() {
-  const [status, setStatus] = useState<statuses>('idle');
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [status, setStatus] = useState<status>('idle');
 
-  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const form = event.target;
-    const formData = new FormData(form);
-    const email = formData.get('email')?.toString() ?? '';
-    const message = formData.get('message')?.toString() ?? '';
-
-    setStatus('loading');
+  const runFetch = useCallback(async () => {
     try {
-      const response = await fetch(ENDPOINT, {
-        method: 'POST',
-        body: JSON.stringify({ email, message }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      if (!response.ok) throw new Error('algo salio mal');
+      const response = await fetch(ENDPOINT);
+      if (!response.ok) throw new Error();
       setStatus('success');
-      const data = await response.json();
-      form.reset();
-      console.log(data);
+      const { data } = await response.json();
+      setPokemons(data);
     } catch {
       setStatus('error');
     }
-  }
+  }, []);
+
+  useEffect(() => {
+    setStatus('loading');
+
+    // fetch(ENDPOINT)
+    //   .then((response) => {
+    //     if (!response.ok) throw new Error();
+    //     return response.json();
+    //   })
+    //   .then(({ data }) => {
+    //     console.log(data);
+    //     setStatus('success');
+    //     setPokemons(data);
+    //   })
+    //   .catch(() => {
+    //     console.log('Algo salió mal');
+    //     setStatus('error');
+    //   });
+    runFetch();
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} className='form'>
-      <div className='field-group'>
-        <label htmlFor='email' className='label'>
-          Email:
-        </label>
-        <input
-          id='email'
-          type='email'
-          name='email'
-          className='field'
-          required
-          disabled={status === 'loading'}
-        />
-      </div>
-      <div className='field-group'>
-        <label htmlFor='message' className='label'>
-          Message
-        </label>
-        <textarea
-          id='message'
-          name='message'
-          className='field'
-          required
-          disabled={status === 'loading'}
-        />
-      </div>
-      <button type='submit' className='button' disabled={status === 'loading'}>
-        {status === 'loading' ? 'Submitting...' : 'Submit'}
-      </button>
-      {status === 'success' && <p>Message sent!</p>}
-      {status === 'error' && <p>Something went wrong!</p>}
-    </form>
+    <div className={styles.wrapper}>
+      {status === 'loading' && <Spinner />}
+      {status === 'error' && <p> Algo salió mal </p>}
+      {status === 'success' &&
+        pokemons.map((pokemon) => (
+          <PokemonCard
+            key={pokemon.id}
+            imageUrl={pokemon.image_url}
+            name={pokemon.name}
+            types={pokemon.types}
+          />
+        ))}
+    </div>
   );
 }
 
