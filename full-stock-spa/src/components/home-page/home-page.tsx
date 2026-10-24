@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Categories from '../categories';
 import Features from '../features';
 import Hero from '../hero';
@@ -50,6 +51,16 @@ const categories: Category[] = [
 ];
 
 export default function HomePage() {
+  useEffect(() => {
+    fetch('http://localhost:3000/api/category')
+      .then((response) => {
+        if (!response.ok) throw new Error();
+        return response.json();
+      })
+      .then((data) => console.log(data))
+      .catch((e) => console.error(e));
+  });
+
   return (
     <>
       <Hero />
