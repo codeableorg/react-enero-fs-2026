@@ -4,10 +4,11 @@ import Features from '../features';
 import Hero from '../hero';
 import styles from './styles.module.css';
 import type { Category } from '../../types';
+import { API_URL } from '../../config';
 
 type statuses = 'idle' | 'loading' | 'success' | 'error';
 
-const url = 'http://localhost:3000/api/category';
+const url = `${API_URL}/category`;
 
 export default function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
