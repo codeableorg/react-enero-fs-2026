@@ -3,17 +3,7 @@ import Categories from '../categories';
 import Features from '../features';
 import Hero from '../hero';
 import styles from './styles.module.css';
-
-export type Category = {
-  id: number;
-  name: string;
-  slug: string;
-  imgSrc: string;
-  alt: string | null;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
+import type { Category } from '../../types';
 
 type statuses = 'idle' | 'loading' | 'success' | 'error';
 

@@ -1,4 +1,4 @@
-import type { Category } from '../home-page';
+import type { Category } from '../../types';
 import styles from './styles.module.css';
 
 type CategoryProps = {

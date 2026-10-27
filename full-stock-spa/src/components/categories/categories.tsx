@@ -1,5 +1,6 @@
+import type { Category } from '../../types';
 import CategoryCard from '../category';
-import type { Category } from '../home-page';
+
 import styles from './styles.module.css';
 
 interface CategoriesProps {
