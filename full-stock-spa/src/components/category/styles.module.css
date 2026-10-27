@@ -15,12 +15,12 @@
   object-fit: cover;
 }
 
-.category__title {
+.category__name {
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.category:hover .category__title {
+.category:hover .category__name {
   text-decoration: underline;
 }
 
