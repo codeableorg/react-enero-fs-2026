@@ -14,23 +14,36 @@ export type Category = {
   updatedAt: Date;
 };
 
+type statuses = 'idle' | 'loading' | 'success' | 'error';
+
+const url = 'http://localhost:3000/api/category';
+
 export default function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [status, setStatus] = useState<statuses>('idle');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/category')
-      .then((response) => {
+    async function runEffect() {
+      try {
+        setStatus('loading');
+        const response = await fetch(url);
         if (!response.ok) throw new Error();
-        return response.json();
-      })
-      .then(({ data }) => setCategories(data))
-      .catch((e) => console.error(e));
-  });
+        const { data } = await response.json();
+        setStatus('success');
+        setCategories(data);
+      } catch (e) {
+        setStatus('error');
+        console.error(e);
+      }
+    }
+
+    runEffect();
+  }, []);
 
   return (
     <>
       <Hero />
-      <Categories categories={categories} />
+      {status === 'success' && <Categories categories={categories} />}
       <Features />
     </>
   );
