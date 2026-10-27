@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import styles from './ContactForm.module.css';
 
 function ContactForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
+  const id = useId();
+  const emailId = `${id}-email`;
+  const messageId = `${id}-message`;
+
   return (
     <form onSubmit={(e) => e.preventDefault()} className={styles['form']}>
       <div className={styles['form-field']}>
-        <label htmlFor='email' className={styles['label']}>
+        <label htmlFor={emailId} className={styles['label']}>
           Email:
         </label>
         <input
-          id='email'
+          id={emailId}
           type='email'
           name='email'
           placeholder='example@mail.com'
@@ -22,11 +26,11 @@ function ContactForm() {
         />
       </div>
       <div className={styles['form-field']}>
-        <label htmlFor='message' className={styles['label']}>
+        <label htmlFor={messageId} className={styles['label']}>
           Message:
         </label>
         <textarea
-          id='message'
+          id={messageId}
           name='message'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
