@@ -23,7 +23,7 @@ export default function Categories({ categories }: CategoriesProps) {
         </div>
         <div className={styles.categories__grid}>
           {categories.map((category) => (
-            <CategoryCard category={category} />
+            <CategoryCard category={category} key={category.name} />
           ))}
         </div>
       </div>
