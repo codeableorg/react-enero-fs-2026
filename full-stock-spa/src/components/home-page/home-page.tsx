@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Categories from '../categories';
 import Features from '../features';
 import Hero from '../hero';
+import styles from './styles.module.css';
 
 export type Category = {
   id: number;
@@ -26,9 +27,13 @@ export default function HomePage() {
     async function runEffect() {
       try {
         setStatus('loading');
+
         const response = await fetch(url);
-        if (!response.ok) throw new Error();
-        const { data } = await response.json();
+        const body = await response.json();
+
+        if (!response.ok) throw new Error(body.error);
+
+        const { data } = body;
         setStatus('success');
         setCategories(data);
       } catch (e) {
@@ -43,6 +48,19 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      {status === 'error' && (
+        <section className={styles['categories-error']}>
+          <div className='container'>
+            <h2 className={styles['categories-error__title']}>
+              Algo salió mal
+            </h2>
+            <p className={styles['categories-error__description']}>
+              No pudimos cargar las categorías. Por favor, intenta recargar la
+              página.
+            </p>
+          </div>
+        </section>
+      )}
       {status === 'success' && <Categories categories={categories} />}
       <Features />
     </>
