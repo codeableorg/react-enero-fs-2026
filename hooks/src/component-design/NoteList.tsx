@@ -7,6 +7,8 @@ interface NoteListProps {
 }
 
 export function NoteList({ notes, onDelete }: NoteListProps) {
+  if (notes.length === 0) return <p>No hay notas</p>;
+
   return (
     <ul>
       {notes.map((note) => (
