@@ -4,7 +4,7 @@ import type { NoteInterface } from './NotePage';
 
 interface NoteProps {
   note: NoteInterface;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 export function Note({ note, onDelete }: NoteProps) {

@@ -2,13 +2,14 @@ import { useState, type SubmitEvent } from 'react';
 import { Input } from './Input';
 import { Button } from './Button';
 import { NoteList } from './NoteList';
+import { TextArea } from './TextArea';
 
 const INITIAL_NOTES: NoteInterface[] = [
-  { id: 1, title: 'First Content', content: 'Hello World' }
+  { id: crypto.randomUUID(), title: 'First Content', content: 'Hello World' }
 ];
 
 export interface NoteInterface {
-  id: number;
+  id: string;
   title: string;
   content: string;
 }
@@ -16,21 +17,26 @@ export interface NoteInterface {
 export function NotesPage() {
   const [notes, setNotes] = useState(INITIAL_NOTES);
   const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   function handleAdd(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newTitle = title.trim();
+    const newContent = content.trim();
 
     if (!newTitle) return;
 
-    const lastIndex = notes.length === 0 ? 0 : notes.length;
-    const newNote = { id: lastIndex + 1, title: newTitle, content: '' };
+    const newNote = {
+      id: crypto.randomUUID(),
+      title: newTitle,
+      content: newContent
+    };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   }
 
-  function handleDelete(id: number) {
+  function handleDelete(id: string) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   }
@@ -38,12 +44,22 @@ export function NotesPage() {
   return (
     <main>
       <form onSubmit={handleAdd}>
-        <Input
-          id='title'
-          value={title}
-          label='title'
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div>
+          <Input
+            id='title'
+            value={title}
+            label='Título'
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <TextArea
+            id='content'
+            value={content}
+            label='Contenido'
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
         <Button type='submit'>Añadir nota</Button>
       </form>
       <NoteList notes={notes} onDelete={handleDelete} />
