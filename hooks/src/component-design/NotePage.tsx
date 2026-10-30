@@ -20,8 +20,12 @@ export function NotesPage() {
   function handleAdd(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const newTitle = title.trim();
+
+    if (!newTitle) return;
+
     const lastIndex = notes.length === 0 ? 0 : notes.length;
-    const newNote = { id: lastIndex + 1, title, content: '' };
+    const newNote = { id: lastIndex + 1, title: newTitle, content: '' };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   }
