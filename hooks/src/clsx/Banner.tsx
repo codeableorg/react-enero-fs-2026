@@ -6,10 +6,15 @@ type BannerProps = {
   user?: { name: string };
   type: 'success' | 'warning' | 'error';
   children: ReactNode;
+  isHighLighted?: boolean;
 };
 
-function Banner({ user, type, children }: BannerProps) {
-  const bannerClassName = clsx(styles.banner, styles[type]);
+function Banner({ user, type, children, isHighLighted }: BannerProps) {
+  const bannerClassName = clsx(
+    styles.banner,
+    styles[type],
+    isHighLighted && styles.highlighted
+  );
 
   return (
     <div className={bannerClassName}>
