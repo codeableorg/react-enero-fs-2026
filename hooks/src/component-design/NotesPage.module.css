@@ -1,0 +1,10 @@
+.page {
+  display: grid;
+  gap: 2rem;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+  max-width: 480px;
+}

@@ -1,0 +1,9 @@
+.content {
+  white-space: pre-wrap; /* Respeta los saltos de línea del textarea */
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}

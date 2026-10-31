@@ -3,16 +3,12 @@ import { Input } from './Input';
 import { Button } from './Button';
 import { NoteList } from './NoteList';
 import { TextArea } from './TextArea';
+import type { NoteInterface } from './types';
+import styles from './NotesPage.module.css';
 
 const INITIAL_NOTES: NoteInterface[] = [
   { id: crypto.randomUUID(), title: 'First Content', content: 'Hello World' }
 ];
-
-export interface NoteInterface {
-  id: string;
-  title: string;
-  content: string;
-}
 
 export function NotesPage() {
   const [notes, setNotes] = useState(INITIAL_NOTES);
@@ -34,6 +30,9 @@ export function NotesPage() {
     };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
+
+    setTitle('');
+    setContent('');
   }
 
   function handleDelete(id: string) {
@@ -42,24 +41,20 @@ export function NotesPage() {
   }
 
   return (
-    <main>
-      <form onSubmit={handleAdd}>
-        <div>
-          <Input
-            id='title'
-            value={title}
-            label='Título'
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <TextArea
-            id='content'
-            value={content}
-            label='Contenido'
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </div>
+    <main className={styles.page}>
+      <form className={styles.form} onSubmit={handleAdd}>
+        <Input
+          id='title'
+          value={title}
+          label='Título'
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextArea
+          id='content'
+          value={content}
+          label='Contenido'
+          onChange={(e) => setContent(e.target.value)}
+        />
         <Button type='submit'>Añadir nota</Button>
       </form>
       <NoteList notes={notes} onDelete={handleDelete} />
