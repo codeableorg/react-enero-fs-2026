@@ -1,0 +1,28 @@
+.button {
+  all: unset;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: hsl(9, 100%, 64%);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  cursor: pointer;
+
+  color: white;
+  font-weight: 500;
+}
+
+.button:hover {
+  background-color: hsl(9, 100%, 59%);
+}
+
+.button:active {
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
