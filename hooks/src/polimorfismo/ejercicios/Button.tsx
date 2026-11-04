@@ -2,15 +2,17 @@ import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import styles from './Button.module.css';
 
-type ButtonProps = ComponentPropsWithRef<'button'> & {
-  variant?: 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'lg' | 'xl' | 'sm-icon' | 'icon' | 'lg-icon' | 'xl-icon';
-};
+type ButtonProps = ComponentPropsWithRef<'button'> &
+  ComponentPropsWithRef<'a'> & {
+    variant?: 'secondary' | 'outline' | 'ghost';
+    size?: 'sm' | 'lg' | 'xl' | 'sm-icon' | 'icon' | 'lg-icon' | 'xl-icon';
+  };
 
 export default function Button({
   variant,
   size,
   className,
+  href,
   ...delegated
 }: ButtonProps) {
   const buttonClassName = clsx(
@@ -20,5 +22,9 @@ export default function Button({
     className
   );
 
-  return <button className={buttonClassName} {...delegated} />;
+  return typeof href === 'string' ? (
+    <a className={buttonClassName} href={href} {...delegated} />
+  ) : (
+    <button className={buttonClassName} {...delegated} />
+  );
 }
