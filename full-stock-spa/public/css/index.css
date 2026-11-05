@@ -13,7 +13,6 @@
 
 /* 3 Components */
 /* UI */
-@import '3_components/button.css' layer(components);
 @import '3_components/separator.css' layer(components);
 @import '3_components/input-field.css' layer(components);
 
