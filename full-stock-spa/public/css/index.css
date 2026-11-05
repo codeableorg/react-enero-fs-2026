@@ -8,7 +8,6 @@
 @import '1_foundation/global.css' layer(global);
 
 /* 2 Layouts */
-@import '2_layouts/container.css' layer(layouts);
 @import '2_layouts/section.css' layer(layouts);
 
 /* 3 Components */
