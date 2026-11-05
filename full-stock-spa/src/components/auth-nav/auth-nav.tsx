@@ -1,3 +1,4 @@
+import Button from '../../ui/button';
 import styles from './styles.module.css';
 
 type AuthNavProps = {
@@ -17,25 +18,25 @@ export default function AuthNav({ user }: AuthNavProps) {
                 </li>
                 <li className={styles['auth-nav__item']}>
                   <form action='/logout' method='POST'>
-                    <button
+                    <Button
                       className={`button button--ghost ${styles['auth-nav__button']}`}
                     >
                       Cerrar sesión
-                    </button>
+                    </Button>
                   </form>
                 </li>
               </>
             ) : (
               <>
                 <li className={styles['auth-nav__item']}>
-                  <a href='/login' className={styles['auth-nav__link']}>
+                  <Button href='/login' className={styles['auth-nav__link']}>
                     Iniciar sesión
-                  </a>
+                  </Button>
                 </li>
                 <li className={styles['auth-nav__item']}>
-                  <a href='/signup' className={styles['auth-nav__link']}>
+                  <Button href='/signup' className={styles['auth-nav__link']}>
                     Crear una cuenta
-                  </a>
+                  </Button>
                 </li>
               </>
             )}

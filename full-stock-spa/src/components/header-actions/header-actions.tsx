@@ -1,3 +1,4 @@
+import Button from '../../ui/button';
 import styles from './styles.module.css';
 
 type HeaderActionsProps = {
@@ -7,9 +8,11 @@ type HeaderActionsProps = {
 export default function HeaderActions({ cartItemsCount }: HeaderActionsProps) {
   return (
     <div className={styles['header-actions']}>
-      <a
+      <Button
         href='/cart'
-        className={`button button--ghost button--xl-icon ${styles['header-actions__cart']}`}
+        variant='ghost'
+        size='xl-icon'
+        className='header-actions__cart'
         aria-label='Carrito de compras'
         data-js='cart-link'
       >
@@ -26,7 +29,7 @@ export default function HeaderActions({ cartItemsCount }: HeaderActionsProps) {
             {cartItemsCount}
           </span>
         )}
-      </a>
+      </Button>
     </div>
   );
 }

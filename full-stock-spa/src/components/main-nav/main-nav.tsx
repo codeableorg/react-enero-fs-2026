@@ -1,3 +1,4 @@
+import Button from '../../ui/button';
 import styles from './styles.module.css';
 
 export default function MainNav() {
@@ -5,19 +6,22 @@ export default function MainNav() {
     <nav aria-label='Navegación principal' className={styles['main-nav']}>
       <ul className={styles['main-nav__list']}>
         <li className={styles['main-nav__item']}>
-          <a href='/categories/polos' className={styles['main-nav__link']}>
+          <Button href='/categories/polos' className={styles['main-nav__link']}>
             Polos
-          </a>
+          </Button>
         </li>
         <li className={styles['main-nav__item']}>
-          <a href='/categories/tazas' className={styles['main-nav__link']}>
+          <Button href='/categories/tazas' className={styles['main-nav__link']}>
             Tazas
-          </a>
+          </Button>
         </li>
         <li className={styles['main-nav__item']}>
-          <a href='/categories/stickers' className={styles['main-nav__link']}>
+          <Button
+            href='/categories/stickers'
+            className={styles['main-nav__link']}
+          >
             Stickers
-          </a>
+          </Button>
         </li>
       </ul>
     </nav>

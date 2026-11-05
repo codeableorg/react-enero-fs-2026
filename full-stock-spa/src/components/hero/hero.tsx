@@ -1,3 +1,4 @@
+import Button from '../../ui/button';
 import styles from './styles.module.css';
 
 export default function Hero() {
@@ -10,9 +11,9 @@ export default function Hero() {
           <br />
           Agrega tus favoritos al carrito antes que se agoten.
         </p>
-        <a href='/category' className='button button--xl'>
+        <Button href='/categories/polos' size='xl'>
           Compra ahora
-        </a>
+        </Button>
       </div>
     </section>
   );
