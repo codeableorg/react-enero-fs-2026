@@ -1,4 +1,5 @@
 import type { Category } from '../../types';
+import Container from '../../ui/container';
 import CategoryCard from '../category';
 
 import styles from './styles.module.css';
@@ -10,7 +11,7 @@ interface CategoriesProps {
 export default function Categories({ categories }: CategoriesProps) {
   return (
     <section className={styles.categories}>
-      <div className='container'>
+      <Container>
         <div className={styles.categories__header}>
           <h2 className={styles.categories__title}>Compra por categoría</h2>
           <p className={styles.categories__description}>
@@ -26,7 +27,7 @@ export default function Categories({ categories }: CategoriesProps) {
             <CategoryCard category={category} key={category.name} />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

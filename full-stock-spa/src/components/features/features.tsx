@@ -1,9 +1,10 @@
+import Container from '../../ui/container';
 import styles from './styles.module.css';
 
 export default function Features() {
   return (
     <section className={styles.features}>
-      <div className='container'>
+      <Container>
         <h2 className={styles['features__title']}>
           Nuestra Promesa de Calidad
         </h2>
@@ -64,7 +65,7 @@ export default function Features() {
             </p>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

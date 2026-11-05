@@ -5,6 +5,7 @@ import Hero from '../hero';
 import styles from './styles.module.css';
 import type { Category } from '../../types';
 import { API_URL } from '../../config';
+import Container from '../../ui/container';
 
 type statuses = 'idle' | 'loading' | 'success' | 'error';
 
@@ -41,7 +42,7 @@ export default function HomePage() {
       <Hero />
       {status === 'error' && (
         <section className={styles['categories-error']}>
-          <div className='container'>
+          <Container>
             <h2 className={styles['categories-error__title']}>
               Algo salió mal
             </h2>
@@ -49,7 +50,7 @@ export default function HomePage() {
               No pudimos cargar las categorías. Por favor, intenta recargar la
               página.
             </p>
-          </div>
+          </Container>
         </section>
       )}
       {status === 'success' && <Categories categories={categories} />}

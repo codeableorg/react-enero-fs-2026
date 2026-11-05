@@ -1,4 +1,5 @@
 import Button from '../../ui/button';
+import Container from '../../ui/container';
 import styles from './styles.module.css';
 
 type AuthNavProps = {
@@ -8,7 +9,7 @@ type AuthNavProps = {
 export default function AuthNav({ user }: AuthNavProps) {
   return (
     <div className={styles['auth-nav']}>
-      <div className={`container ${styles['auth-nav__container']}`}>
+      <Container className={styles['auth-nav__container']}>
         <nav aria-label='Autenticación de usuario'>
           <ul className={styles['auth-nav__list']}>
             {user ? (
@@ -42,7 +43,7 @@ export default function AuthNav({ user }: AuthNavProps) {
             )}
           </ul>
         </nav>
-      </div>
+      </Container>
     </div>
   );
 }

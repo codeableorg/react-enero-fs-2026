@@ -1,4 +1,5 @@
 import Button from '../../ui/button';
+import Container from '../../ui/container';
 import HeaderActions from '../header-actions';
 import MainNav from '../main-nav';
 import styles from './styles.module.css';
@@ -9,7 +10,7 @@ type HeaderMainProps = {
 
 export default function HeaderMain({ cartItemsCount }: HeaderMainProps) {
   return (
-    <div className={`container ${styles['header-main']}`}>
+    <Container className={styles['header-main']}>
       <div className={styles['header-main__top']}>
         <Button href='/'>
           <img
@@ -23,6 +24,6 @@ export default function HeaderMain({ cartItemsCount }: HeaderMainProps) {
       </div>
       <div className={`separator ${styles['header-main__separator']}`}></div>
       <MainNav />
-    </div>
+    </Container>
   );
 }

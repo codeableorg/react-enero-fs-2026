@@ -1,6 +1,7 @@
 import { type SubmitEvent } from 'react';
 import styles from './styles.module.css';
 import Button from '../../ui/button';
+import Container from '../../ui/container';
 
 type FooterProps = {
   className?: string;
@@ -18,7 +19,7 @@ export default function Footer({ className }: FooterProps) {
 
   return (
     <footer className={className}>
-      <div className='container'>
+      <Container>
         <section className={`section ${styles['footer__section']}`}>
           <div className={styles['footer__links']}>
             <ul role='list' className={styles['footer__list']}>
@@ -93,7 +94,7 @@ export default function Footer({ className }: FooterProps) {
         <small className={styles['footer__copyright']}>
           Todos los derechos reservados © Full Stock
         </small>
-      </div>
+      </Container>
     </footer>
   );
 }
