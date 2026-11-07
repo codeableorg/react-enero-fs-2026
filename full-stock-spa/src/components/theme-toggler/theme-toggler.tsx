@@ -7,6 +7,12 @@ export default function ThemeToggler() {
     document.documentElement.classList.contains('dark') ? 'dark' : 'light'
   );
 
+  function toggleTheme() {
+    const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', nextTheme);
+    setTheme(nextTheme);
+  }
+
   useEffect(() => {
     const html = document.documentElement;
     html.classList.remove('light', 'dark');
@@ -26,4 +32,7 @@ export default function ThemeToggler() {
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
+
+  return;
+  <button onClick={toggleTheme}></button>;
 }
