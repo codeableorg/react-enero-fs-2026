@@ -21,14 +21,15 @@ export default function Button({
   className,
   ...delegated
 }: ButtonProps) {
+  const isAnchor = typeof delegated.href === 'string';
   const buttonClassName = clsx(
-    styles['button'],
+    !isAnchor && styles['button'],
     variant && styles[`button--${variant}`],
     size && styles[`button--${size}`],
     className
   );
 
-  if (typeof delegated.href === 'string') {
+  if (isAnchor) {
     return <a className={buttonClassName} {...delegated} />;
   }
 
