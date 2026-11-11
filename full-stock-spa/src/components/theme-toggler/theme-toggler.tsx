@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Button from '../../ui/button';
 
 type Theme = 'light' | 'dark';
 
@@ -33,6 +34,21 @@ export default function ThemeToggler() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  return;
-  <button onClick={toggleTheme}></button>;
+  const isDark = theme === 'dark';
+  const label = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+
+  return (
+    <Button
+      type='button'
+      variant='ghost'
+      size='xl-icon'
+      aria-label={label}
+      onClick={toggleTheme}
+    >
+      <img
+        src={isDark ? '/images/icons/sun.svg' : '/images/icons/moon.svg'}
+        alt=''
+      />
+    </Button>
+  );
 }
