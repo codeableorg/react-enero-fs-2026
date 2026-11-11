@@ -1,4 +1,5 @@
 import Button from '../../ui/button';
+import ThemeToggler from '../theme-toggler';
 import styles from './styles.module.css';
 
 type HeaderActionsProps = {
@@ -8,6 +9,7 @@ type HeaderActionsProps = {
 export default function HeaderActions({ cartItemsCount }: HeaderActionsProps) {
   return (
     <div className={styles['header-actions']}>
+      <ThemeToggler />
       <Button
         href='/cart'
         variant='ghost'
