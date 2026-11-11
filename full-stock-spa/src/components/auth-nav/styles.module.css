@@ -1,6 +1,6 @@
 .auth-nav {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--secondary-background);
+  color: var(--primary-foreground);
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -28,10 +28,10 @@
 
 .auth-nav__link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--white);
+  text-decoration-color: var(--primary-foreground);
   text-underline-offset: 2px;
 }
 
 .auth-nav__button {
-  color: var(--white);
+  color: var(--primary-foreground);
 }
