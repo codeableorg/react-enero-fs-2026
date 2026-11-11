@@ -9,7 +9,7 @@ import Container from '../../ui/container';
 
 type statuses = 'idle' | 'loading' | 'success' | 'error';
 
-const url = `${API_URL}/category`;
+const url = `${API_URL}/categories`;
 
 export default function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
