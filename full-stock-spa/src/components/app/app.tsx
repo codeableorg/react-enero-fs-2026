@@ -1,6 +1,7 @@
 import Footer from '../footer';
 import Header from '../header';
-import HomePage from '../home-page';
+// import HomePage from '../home-page';
+import CategoryPage from '../category-page';
 import styles from './styles.module.css';
 
 const user: { email: string } | null =
@@ -16,7 +17,8 @@ export default function App() {
         cartItemsCount={cartItemsCount}
       />
       <main>
-        <HomePage />
+        {/* <HomePage /> */}
+        <CategoryPage categorySlug='polos' />
       </main>
       <Footer />
     </div>
