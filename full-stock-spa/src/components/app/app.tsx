@@ -3,7 +3,7 @@ import Header from '../header';
 // import HomePage from '../home-page';
 import CategoryPage from '../category-page';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HomePage from '../home-page';
 import Container from '../../ui/container';
 
@@ -12,9 +12,19 @@ const user: { email: string } | null =
 const cartItemsCount = 0;
 
 export default function App() {
-  const [path, setPath] = useState('/');
+  const [path, setPath] = useState(() => window.location.pathname);
+
+  useEffect(() => {
+    function handlePopState() {
+      setPath(window.location.pathname);
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   function navigate(to: string) {
+    window.history.pushState(null, '', to);
     setPath(to);
   }
 
