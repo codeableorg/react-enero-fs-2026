@@ -1,17 +1,34 @@
+import type { MouseEvent } from 'react';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
 
-export default function MainNav() {
+type MainNavProps = {
+  navigate: (to: string) => void;
+};
+
+export default function MainNav({ navigate }: MainNavProps) {
+  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    navigate(event.currentTarget.getAttribute('href')!);
+  }
   return (
     <nav aria-label='Navegación principal' className={styles['main-nav']}>
       <ul className={styles['main-nav__list']}>
         <li className={styles['main-nav__item']}>
-          <Button href='/categories/polos' className={styles['main-nav__link']}>
+          <Button
+            href='/categories/polos'
+            className={styles['main-nav__link']}
+            onClick={handleLinkClick}
+          >
             Polos
           </Button>
         </li>
         <li className={styles['main-nav__item']}>
-          <Button href='/categories/tazas' className={styles['main-nav__link']}>
+          <Button
+            href='/categories/tazas'
+            className={styles['main-nav__link']}
+            onClick={handleLinkClick}
+          >
             Tazas
           </Button>
         </li>
@@ -19,6 +36,7 @@ export default function MainNav() {
           <Button
             href='/categories/stickers'
             className={styles['main-nav__link']}
+            onClick={handleLinkClick}
           >
             Stickers
           </Button>

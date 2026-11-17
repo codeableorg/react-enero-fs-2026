@@ -5,17 +5,19 @@ type HeaderProps = {
   className?: string;
   user: { email: string } | null;
   cartItemsCount: number;
+  navigate: (to: string) => void;
 };
 
 export default function Header({
   className,
   user,
-  cartItemsCount
+  cartItemsCount,
+  navigate
 }: HeaderProps) {
   return (
     <header className={className}>
       <AuthNav user={user} />
-      <HeaderMain cartItemsCount={cartItemsCount} />
+      <HeaderMain cartItemsCount={cartItemsCount} navigate={navigate} />
     </header>
   );
 }
