@@ -8,7 +8,7 @@ type CategoryProps = {
 
 export default function CategoryCard({ category }: CategoryProps) {
   return (
-    <Button href='category' className={styles.category}>
+    <Button href={`/categories/${category.slug}`} className={styles.category}>
       <div className={styles.category__image}>
         <img src={category.imgSrc} alt={category.alt ?? category.name} />
       </div>
