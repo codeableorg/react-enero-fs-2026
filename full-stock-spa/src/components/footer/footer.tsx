@@ -1,13 +1,14 @@
-import { type SubmitEvent } from 'react';
+import { type MouseEvent, type SubmitEvent } from 'react';
 import styles from './styles.module.css';
 import Button from '../../ui/button';
 import Container from '../../ui/container';
 
 type FooterProps = {
   className?: string;
+  navigate: (to: string) => void;
 };
 
-export default function Footer({ className }: FooterProps) {
+export default function Footer({ className, navigate }: FooterProps) {
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -15,6 +16,11 @@ export default function Footer({ className }: FooterProps) {
     // La API todavía no tiene un endpoint de boletín. Sin el preventDefault, el
     // navegador enviaría el formulario de forma nativa y recargaría la SPA.
     console.log('Suscripción al boletín:', formData.get('email'));
+  }
+
+  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    navigate(event.currentTarget.getAttribute('href')!);
   }
 
   return (
@@ -25,13 +31,19 @@ export default function Footer({ className }: FooterProps) {
             <ul role='list' className={styles['footer__list']}>
               <li className={styles['footer__title']}>Tienda</li>
               <li>
-                <Button href='/categories/polos'>Polos</Button>
+                <Button href='/categories/polos' onClick={handleLinkClick}>
+                  Polos
+                </Button>
               </li>
               <li>
-                <Button href='/categories/tazas'>Tazas</Button>
+                <Button href='/categories/tazas' onClick={handleLinkClick}>
+                  Tazas
+                </Button>
               </li>
               <li>
-                <Button href='/categories/stickers'>Stickers</Button>
+                <Button href='/categories/stickers' onClick={handleLinkClick}>
+                  Stickers
+                </Button>
               </li>
             </ul>
             <ul role='list' className={styles['footer__list']}>

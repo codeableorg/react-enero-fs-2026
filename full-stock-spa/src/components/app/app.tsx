@@ -30,7 +30,7 @@ export default function App() {
 
   let page;
   if (path === '/') {
-    page = <HomePage />;
+    page = <HomePage navigate={navigate} />;
   } else if (path.startsWith('/categories')) {
     const slug = path.replace('/categories/', '');
     page = <CategoryPage categorySlug={slug} />;
@@ -51,7 +51,7 @@ export default function App() {
         navigate={navigate}
       />
       <main>{page}</main>
-      <Footer />
+      <Footer navigate={navigate} />
     </div>
   );
 }

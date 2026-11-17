@@ -1,8 +1,18 @@
+import type { MouseEvent } from 'react';
 import Button from '../../ui/button';
 import Container from '../../ui/container';
 import styles from './styles.module.css';
 
-export default function Hero() {
+type HeroProps = {
+  navigate: (to: string) => void;
+};
+
+export default function Hero({ navigate }: HeroProps) {
+  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    navigate(event.currentTarget.getAttribute('href')!);
+  }
+
   return (
     <section className={styles.hero}>
       <Container className={styles['hero__container']}>
@@ -12,7 +22,7 @@ export default function Hero() {
           <br />
           Agrega tus favoritos al carrito antes que se agoten.
         </p>
-        <Button href='/categories/polos' size='xl'>
+        <Button href='/categories/polos' size='xl' onClick={handleLinkClick}>
           Compra ahora
         </Button>
       </Container>

@@ -6,9 +6,10 @@ import styles from './styles.module.css';
 
 interface CategoriesProps {
   categories: Category[];
+  navigate: (to: string) => void;
 }
 
-export default function Categories({ categories }: CategoriesProps) {
+export default function Categories({ categories, navigate }: CategoriesProps) {
   return (
     <section className={styles.categories}>
       <Container>
@@ -24,7 +25,11 @@ export default function Categories({ categories }: CategoriesProps) {
         </div>
         <div className={styles.categories__grid}>
           {categories.map((category) => (
-            <CategoryCard category={category} key={category.name} />
+            <CategoryCard
+              category={category}
+              key={category.name}
+              navigate={navigate}
+            />
           ))}
         </div>
       </Container>
