@@ -1,27 +1,14 @@
-import { createContext, useState } from 'react';
+import CountProvider from './CountProvider';
 import Toolbar from './Toolbar';
 
-type CountContextValue = {
-  count: number;
-  onIncrement?: () => void;
-};
-
-export const CountContext = createContext<CountContextValue | null>(null);
-
 function App() {
-  const [count, setCount] = useState(0);
-
-  function onIncrement() {
-    setCount(count + 1);
-  }
-
   return (
-    <CountContext.Provider value={{ count, onIncrement }}>
+    <CountProvider>
       <div className='container'>
         <h1>Contador</h1>
         <Toolbar />
       </div>
-    </CountContext.Provider>
+    </CountProvider>
   );
 }
 

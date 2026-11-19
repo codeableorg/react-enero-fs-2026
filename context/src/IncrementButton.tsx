@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CountContext } from './App';
+import { CountContext } from './CountProvider';
 
 function IncrementButton() {
   const context = useContext(CountContext);
