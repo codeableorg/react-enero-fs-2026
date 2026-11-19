@@ -31,7 +31,7 @@ export default function HeaderMain({ cartItemsCount }: HeaderMainProps) {
         <HeaderActions cartItemsCount={cartItemsCount} />
       </div>
       <div className={`separator ${styles['header-main__separator']}`}></div>
-      <MainNav navigate={navigate} />
+      <MainNav />
     </Container>
   );
 }
