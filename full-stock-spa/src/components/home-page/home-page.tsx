@@ -11,11 +11,7 @@ type statuses = 'idle' | 'loading' | 'success' | 'error';
 
 const url = `${API_URL}/categories`;
 
-type HomePageProps = {
-  navigate: (to: string) => void;
-};
-
-export default function HomePage({ navigate }: HomePageProps) {
+export default function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [status, setStatus] = useState<statuses>('idle');
 
@@ -43,7 +39,7 @@ export default function HomePage({ navigate }: HomePageProps) {
 
   return (
     <>
-      <Hero navigate={navigate} />
+      <Hero />
       {status === 'error' && (
         <section className={styles['categories-error']}>
           <Container>
@@ -57,9 +53,7 @@ export default function HomePage({ navigate }: HomePageProps) {
           </Container>
         </section>
       )}
-      {status === 'success' && (
-        <Categories categories={categories} navigate={navigate} />
-      )}
+      {status === 'success' && <Categories categories={categories} />}
       <Features />
     </>
   );

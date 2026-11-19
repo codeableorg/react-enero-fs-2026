@@ -1,14 +1,15 @@
-import type { MouseEvent } from 'react';
+import { useContext, type MouseEvent } from 'react';
 import type { Category } from '../../types';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
+import { RouterContext } from '../router-provider';
 
 type CategoryProps = {
   category: Category;
-  navigate: (to: string) => void;
 };
 
-export default function CategoryCard({ category, navigate }: CategoryProps) {
+export default function CategoryCard({ category }: CategoryProps) {
+  const { navigate } = useContext(RouterContext)!;
   function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     navigate(event.currentTarget.getAttribute('href')!);
