@@ -2,10 +2,10 @@ import { type MouseEvent } from 'react';
 import Button from '../../ui/button';
 import Container from '../../ui/container';
 import styles from './styles.module.css';
-import { useRouterContext } from '../router-provider/router-hooks';
+import { useNavigate } from '../router-provider/router-hooks';
 
 export default function Hero() {
-  const { navigate } = useRouterContext();
+  const navigate = useNavigate();
   function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     navigate(event.currentTarget.getAttribute('href')!);

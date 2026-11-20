@@ -9,3 +9,11 @@ export function useRouterContext() {
 
   return context;
 }
+
+export function useLocation() {
+  return useRouterContext().path;
+}
+
+export function useNavigate() {
+  return useRouterContext().navigate;
+}

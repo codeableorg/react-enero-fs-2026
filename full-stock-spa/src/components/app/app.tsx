@@ -4,14 +4,14 @@ import CategoryPage from '../category-page';
 import styles from './styles.module.css';
 import HomePage from '../home-page';
 import Container from '../../ui/container';
-import { useRouterContext } from '../router-provider/router-hooks';
+import { useLocation } from '../router-provider/router-hooks';
 
 const user: { email: string } | null =
   Math.random() > 0.5 ? { email: 'user@example.com' } : null;
 const cartItemsCount = 0;
 
 export default function App() {
-  const { path } = useRouterContext();
+  const path = useLocation();
 
   let page;
   if (path === '/') {

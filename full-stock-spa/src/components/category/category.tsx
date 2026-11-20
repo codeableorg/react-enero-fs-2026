@@ -2,14 +2,14 @@ import { type MouseEvent } from 'react';
 import type { Category } from '../../types';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
-import { useRouterContext } from '../router-provider/router-hooks';
+import { useNavigate } from '../router-provider/router-hooks';
 
 type CategoryProps = {
   category: Category;
 };
 
 export default function CategoryCard({ category }: CategoryProps) {
-  const { navigate } = useRouterContext();
+  const navigate = useNavigate();
   function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     navigate(event.currentTarget.getAttribute('href')!);

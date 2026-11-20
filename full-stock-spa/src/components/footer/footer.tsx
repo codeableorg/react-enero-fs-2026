@@ -2,14 +2,14 @@ import { type MouseEvent, type SubmitEvent } from 'react';
 import styles from './styles.module.css';
 import Button from '../../ui/button';
 import Container from '../../ui/container';
-import { useRouterContext } from '../router-provider/router-hooks';
+import { useNavigate } from '../router-provider/router-hooks';
 
 type FooterProps = {
   className?: string;
 };
 
 export default function Footer({ className }: FooterProps) {
-  const { navigate } = useRouterContext();
+  const navigate = useNavigate();
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
