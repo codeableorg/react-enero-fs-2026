@@ -13,7 +13,8 @@
     "clsx": "^2.1.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-feather": "^2.0.10"
+    "react-feather": "^2.0.10",
+    "react-router": "^8.5.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
