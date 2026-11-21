@@ -1,27 +1,18 @@
-import { type MouseEvent } from 'react';
 import Button from '../../ui/button';
 import Container from '../../ui/container';
 import HeaderActions from '../header-actions';
 import MainNav from '../main-nav';
 import styles from './styles.module.css';
-import { useNavigate } from 'react-router';
 
 type HeaderMainProps = {
   cartItemsCount: number;
 };
 
 export default function HeaderMain({ cartItemsCount }: HeaderMainProps) {
-  const navigate = useNavigate();
-
-  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
-    event.preventDefault();
-    navigate(event.currentTarget.getAttribute('href')!);
-  }
-
   return (
     <Container className={styles['header-main']}>
       <div className={styles['header-main__top']}>
-        <Button href='/' onClick={handleLinkClick}>
+        <Button href='/'>
           <img
             src='/images/fullstock-logo.svg'
             alt='FullStock inicio'

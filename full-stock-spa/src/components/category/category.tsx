@@ -1,26 +1,14 @@
-import { type MouseEvent } from 'react';
 import type { Category } from '../../types';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
-import { useNavigate } from 'react-router';
 
 type CategoryProps = {
   category: Category;
 };
 
 export default function CategoryCard({ category }: CategoryProps) {
-  const navigate = useNavigate();
-
-  function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
-    event.preventDefault();
-    navigate(event.currentTarget.getAttribute('href')!);
-  }
   return (
-    <Button
-      href={`/categories/${category.slug}`}
-      className={styles.category}
-      onClick={handleLinkClick}
-    >
+    <Button href={`/categories/${category.slug}`} className={styles.category}>
       <div className={styles.category__image}>
         <img src={category.imgSrc} alt={category.alt ?? category.name} />
       </div>

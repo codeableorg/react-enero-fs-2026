@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithRef } from 'react';
 import styles from './styles.module.css';
+import { Link } from 'react-router';
 
 type BaseProps = {
   variant?: 'secondary' | 'outline' | 'ghost';
@@ -30,7 +31,13 @@ export default function Button({
   );
 
   if (isAnchor) {
-    return <a className={buttonClassName} {...delegated} />;
+    const { href, ...rest } = delegated;
+    // Enlaces internos navegan con el router (sin recarga);
+    // los externos siguen siendo un <a> nativo.
+    if (href.startsWith('/')) {
+      return <Link to={href} className={buttonClassName} {...rest} />;
+    }
+    return <a href={href} className={buttonClassName} {...rest} />;
   }
 
   return <button className={buttonClassName} {...delegated} />;
