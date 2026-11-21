@@ -2,7 +2,7 @@ import { type MouseEvent } from 'react';
 import type { Category } from '../../types';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
-import { useNavigate } from '../router-provider/router-hooks';
+import { useNavigate } from 'react-router';
 
 type CategoryProps = {
   category: Category;
@@ -10,6 +10,7 @@ type CategoryProps = {
 
 export default function CategoryCard({ category }: CategoryProps) {
   const navigate = useNavigate();
+
   function handleLinkClick(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     navigate(event.currentTarget.getAttribute('href')!);
