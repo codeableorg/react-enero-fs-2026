@@ -4,20 +4,20 @@ import CategoryPage from '../category-page';
 import styles from './styles.module.css';
 import HomePage from '../home-page';
 import Container from '../../ui/container';
-import { useLocation } from '../router-provider/router-hooks';
+import { useLocation } from 'react-router';
 
 const user: { email: string } | null =
   Math.random() > 0.5 ? { email: 'user@example.com' } : null;
 const cartItemsCount = 0;
 
 export default function App() {
-  const path = useLocation();
+  const { pathname } = useLocation();
 
   let page;
-  if (path === '/') {
+  if (pathname === '/') {
     page = <HomePage />;
-  } else if (path.startsWith('/categories')) {
-    const slug = path.replace('/categories/', '');
+  } else if (pathname.startsWith('/categories')) {
+    const slug = pathname.replace('/categories/', '');
     page = <CategoryPage categorySlug={slug} />;
   } else {
     page = (
