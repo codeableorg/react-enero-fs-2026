@@ -4,29 +4,13 @@ import CategoryPage from '../category-page';
 import styles from './styles.module.css';
 import HomePage from '../home-page';
 import Container from '../../ui/container';
-import { useLocation } from 'react-router';
+import { Route, Routes } from 'react-router';
 
 const user: { email: string } | null =
   Math.random() > 0.5 ? { email: 'user@example.com' } : null;
 const cartItemsCount = 0;
 
 export default function App() {
-  const { pathname } = useLocation();
-
-  let page;
-  if (pathname === '/') {
-    page = <HomePage />;
-  } else if (pathname.startsWith('/categories')) {
-    const slug = pathname.replace('/categories/', '');
-    page = <CategoryPage categorySlug={slug} />;
-  } else {
-    page = (
-      <Container>
-        <p>404 — Página no encontrada</p>
-      </Container>
-    );
-  }
-
   return (
     <div className='root'>
       <Header
@@ -34,7 +18,20 @@ export default function App() {
         user={user}
         cartItemsCount={cartItemsCount}
       />
-      <main>{page}</main>
+      <main>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/categories/:slug' element={<CategoryPage />} />
+          <Route
+            path='*'
+            element={
+              <Container>
+                <p>404 - Página no encontrada</p>
+              </Container>
+            }
+          />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );

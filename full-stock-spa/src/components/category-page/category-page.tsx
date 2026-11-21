@@ -5,12 +5,10 @@ import styles from './styles.module.css';
 import Container from '../../ui/container';
 import PriceFilter from '../price-filter';
 import ProductCard from '../product-card';
+import { useParams } from 'react-router';
 
-type CategoryPageProps = {
-  categorySlug: string;
-};
-
-export default function CategoryPage({ categorySlug }: CategoryPageProps) {
+export default function CategoryPage() {
+  const { slug } = useParams();
   const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [status, setStatus] = useState<
@@ -21,8 +19,8 @@ export default function CategoryPage({ categorySlug }: CategoryPageProps) {
     async function runEffect() {
       try {
         const [categoryResponse, productsResponse] = await Promise.all([
-          fetch(`${API_URL}/categories/${categorySlug}`),
-          fetch(`${API_URL}/categories/${categorySlug}/products`)
+          fetch(`${API_URL}/categories/${slug}`),
+          fetch(`${API_URL}/categories/${slug}/products`)
         ]);
         const categoryBody = await categoryResponse.json();
         const productsBody = await productsResponse.json();
@@ -39,7 +37,7 @@ export default function CategoryPage({ categorySlug }: CategoryPageProps) {
       }
     }
     runEffect();
-  }, [categorySlug]);
+  }, [slug]);
 
   const isLoading = status === 'loading';
   const isError = status === 'error';
