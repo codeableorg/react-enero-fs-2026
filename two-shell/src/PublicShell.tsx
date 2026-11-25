@@ -1,20 +1,19 @@
-import { type ReactNode } from 'react';
-import { Link } from 'react-router';
+import { Link, Outlet } from 'react-router';
 
-type Props = { children: ReactNode };
-
-export default function PublicShell({ children }: Props) {
+export default function PublicShell() {
   return (
     <div>
       <header className='shell__header'>
-        <strong>Acme</strong>
+        <strong>Acme, amigo del coyote</strong>
         <nav className='shell__nav'>
           <Link to='/'>Inicio</Link>
           <Link to='/about'>Nosotros</Link>
           <Link to='/dashboard'>Dashboard</Link>
         </nav>
       </header>
-      <main className='shell__main'>{children}</main>
+      <main className='shell__main'>
+        <Outlet />
+      </main>
     </div>
   );
 }
