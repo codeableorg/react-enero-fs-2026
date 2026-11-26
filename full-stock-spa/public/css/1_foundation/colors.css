@@ -61,6 +61,10 @@
   --foreground: var(--neutral-12);
   --primary: var(--accent-9);
   --primary-hover: var(--accent-10);
+  --accent-foreground: var(--accent-11);
+  --accent-background: var(--accent-3);
+  --muted: var(--neutral-3);
+  --muted-foreground: var(--neutral-11);
   --secondary: var(--neutral-12);
   --secondary-hover: var(--neutral-11);
   --success: hsl(142 71% 45%);
