@@ -1,27 +1,50 @@
+import { NavLink } from 'react-router';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 export default function MainNav() {
   return (
     <nav aria-label='Navegación principal' className={styles['main-nav']}>
       <ul className={styles['main-nav__list']}>
         <li className={styles['main-nav__item']}>
-          <Button href='/categories/polos' className={styles['main-nav__link']}>
+          <NavLink
+            to='/categories/polos'
+            className={({ isActive }) =>
+              clsx(
+                styles['main-nav__link'],
+                isActive && styles['main-nav__link--active']
+              )
+            }
+          >
             Polos
-          </Button>
+          </NavLink>
         </li>
         <li className={styles['main-nav__item']}>
-          <Button href='/categories/tazas' className={styles['main-nav__link']}>
+          <NavLink
+            to='/categories/tazas'
+            className={({ isActive }) =>
+              clsx(
+                styles['main-nav__link'],
+                isActive && styles['main-nav__link--active']
+              )
+            }
+          >
             Tazas
-          </Button>
+          </NavLink>
         </li>
         <li className={styles['main-nav__item']}>
-          <Button
-            href='/categories/stickers'
-            className={styles['main-nav__link']}
+          <NavLink
+            to='/categories/stickers'
+            className={({ isActive }) =>
+              clsx(
+                styles['main-nav__link'],
+                isActive && styles['main-nav__link--active']
+              )
+            }
           >
             Stickers
-          </Button>
+          </NavLink>
         </li>
       </ul>
     </nav>
