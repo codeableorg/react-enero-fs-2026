@@ -18,7 +18,6 @@
 /* Routes */
 @import '3_components/not-found.css' layer(components);
 @import '3_components/error.css' layer(components);
-@import '3_components/root.css' layer(components);
 @import '3_components/signup.css' layer(components);
 @import '3_components/login.css' layer(components);
 @import '3_components/product.css' layer(components);
