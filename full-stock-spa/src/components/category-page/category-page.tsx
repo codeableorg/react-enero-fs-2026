@@ -8,12 +8,44 @@ import ProductCard from '../product-card';
 import { useParams } from 'react-router';
 
 export default function CategoryPage() {
+  const [filters, setFilters] = useState<{ min: string; max: string }>({
+    min: '',
+    max: ''
+  });
+
   const { slug } = useParams();
+
   const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('loading');
+
+  function parsePrice(value: string | null): number | undefined {
+    if (value === null || value.trim() === '') return undefined;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : undefined;
+  }
+
+  const minPrice = parsePrice(filters.min);
+  const maxPrice = parsePrice(filters.max);
+
+  const visibleProducts = products.filter((product) => {
+    const priceInSoles = product.price / 100; // el precio viene en centavos
+
+    // retornamos false si el producto no pasa el filtro
+    if (minPrice !== undefined && priceInSoles < minPrice) return false;
+    if (maxPrice !== undefined && priceInSoles > maxPrice) return false;
+
+    return true;
+  });
+
+  function handleFilter(formData: FormData) {
+    setFilters({
+      min: String(formData.get('minPrice') ?? ''),
+      max: String(formData.get('maxPrice') ?? '')
+    });
+  }
 
   useEffect(() => {
     async function runEffect() {
@@ -73,12 +105,17 @@ export default function CategoryPage() {
       <section className={styles['products']}>
         <Container>
           <div className={styles['products__layout']}>
-            <PriceFilter className={styles['products__price-filter']} />
-            {products.length === 0 ? (
+            <PriceFilter
+              className={styles['products__price-filter']}
+              defaultMinPrice={filters.min}
+              defaultMaxPrice={filters.max}
+              onFilter={handleFilter}
+            />
+            {visibleProducts.length === 0 ? (
               <p>No hay productos en esta categoría.</p>
             ) : (
               <div className={styles['products__grid']}>
-                {products.map((product) => (
+                {visibleProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>

@@ -1,16 +1,32 @@
-import type { ComponentPropsWithoutRef } from 'react';
+import type { SubmitEvent } from 'react';
 import Button from '../../ui/button';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 
-type PriceFilterProps = ComponentPropsWithoutRef<'form'>;
+type PriceFilterProps = {
+  className?: string;
+  defaultMinPrice?: string;
+  defaultMaxPrice?: string;
+  onFilter: (formData: FormData) => void;
+};
 
 export default function PriceFilter({
   className,
-  ...delegated
+  defaultMinPrice,
+  defaultMaxPrice,
+  onFilter
 }: PriceFilterProps) {
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    onFilter(form);
+  }
+
   return (
-    <form className={clsx(styles['price-filter'], className)} {...delegated}>
+    <form
+      className={clsx(styles['price-filter'], className)}
+      onSubmit={handleSubmit}
+    >
       <fieldset>
         <legend className={styles['price-filter__legend']}>Precio</legend>
         <div className={styles['price-filter__inputs']}>
@@ -24,7 +40,7 @@ export default function PriceFilter({
               name='minPrice'
               min='0'
               step='0.01'
-              value='minPrice'
+              defaultValue={defaultMinPrice}
             />
           </div>
           <div className={styles['price-filter__field']}>
@@ -37,7 +53,7 @@ export default function PriceFilter({
               name='maxPrice'
               min='0'
               step='0.01'
-              value='maxPrice'
+              defaultValue={defaultMaxPrice}
             />
           </div>
         </div>
@@ -49,7 +65,7 @@ export default function PriceFilter({
         size='xl'
         className={styles['price-filter__button']}
       >
-        Filtar Productos
+        Filtrar Productos
       </Button>
     </form>
   );
