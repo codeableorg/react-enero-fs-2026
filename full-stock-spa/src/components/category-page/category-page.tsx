@@ -5,14 +5,10 @@ import styles from './styles.module.css';
 import Container from '../../ui/container';
 import PriceFilter from '../price-filter';
 import ProductCard from '../product-card';
-import { useParams } from 'react-router';
+import { useParams, useSearchParams } from 'react-router';
 
 export default function CategoryPage() {
-  const [filters, setFilters] = useState<{ min: string; max: string }>({
-    min: '',
-    max: ''
-  });
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const { slug } = useParams();
 
   const [category, setCategory] = useState<Category | null>(null);
@@ -27,8 +23,8 @@ export default function CategoryPage() {
     return Number.isFinite(parsed) && parsed >= 0 ? parsed : undefined;
   }
 
-  const minPrice = parsePrice(filters.min);
-  const maxPrice = parsePrice(filters.max);
+  const minPrice = parsePrice(searchParams.get('minPrice'));
+  const maxPrice = parsePrice(searchParams.get('maxPrice'));
 
   const visibleProducts = products.filter((product) => {
     const priceInSoles = product.price / 100; // el precio viene en centavos
@@ -41,10 +37,19 @@ export default function CategoryPage() {
   });
 
   function handleFilter(formData: FormData) {
-    setFilters({
-      min: String(formData.get('minPrice') ?? ''),
-      max: String(formData.get('maxPrice') ?? '')
-    });
+    const min = formData.get('minPrice');
+    const max = formData.get('maxPrice');
+
+    const next = new URLSearchParams(searchParams);
+    console.log(next);
+
+    if (typeof min === 'string' && min.trim() !== '') next.set('minPrice', min);
+    else next.delete('minPrice');
+
+    if (typeof max === 'string' && max.trim() !== '') next.set('maxPrice', max);
+    else next.delete('maxPrice');
+
+    setSearchParams(next);
   }
 
   useEffect(() => {
@@ -107,8 +112,8 @@ export default function CategoryPage() {
           <div className={styles['products__layout']}>
             <PriceFilter
               className={styles['products__price-filter']}
-              defaultMinPrice={filters.min}
-              defaultMaxPrice={filters.max}
+              defaultMinPrice={searchParams.get('minPrice') ?? undefined}
+              defaultMaxPrice={searchParams.get('maxPrice') ?? undefined}
               onFilter={handleFilter}
             />
             {visibleProducts.length === 0 ? (
